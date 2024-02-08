@@ -10,26 +10,36 @@ public class main {
 		boolean executando = true;
 		
 		while(executando) {
-			System.out.println("1. Adicionar tarefa\n"
-					+ "2. Remover tarefa\n"
-					+ "3. Listar tarefas\n"
-					+ "4. Listar tarefas em ordem alfabetica\n"
-					+ "5. Listar tarefas em cronologicas\n"
-					+ "6. Sair ");
-			
-			System.out.println("digite cada uma das opçoes\n");
-			acaoDigitada = input.nextInt();
-			input.nextLine();
-			
-			if(acaoDigitada == 1) {
-				System.out.println("digite uma tarefa\n");
-				tarefaDigitada = input.nextLine();
-			}
-			
-			tarefa.alteracoesLista(acaoDigitada, tarefaDigitada);
+			try {
+				System.out.println("---MENU DE CONTROLE---\n"
+						+ "1. Adicionar tarefa\n"
+						+ "2. Remover tarefa\n"
+						+ "3. Listar tarefas\n"
+						+ "4. Listar tarefas em ordem alfabetica\n"
+						+ "5. Listar tarefas em cronologicas\n"
+						+ "6. Sair \n");
+				
+				System.out.println("Digite a numeração que deseja selecionar acima:");
+				acaoDigitada = input.nextInt();
+				input.nextLine();
+				System.out.println("\n");
+				
+				if(acaoDigitada == 1) {
+					System.out.println("digite uma tarefa: ");
+					tarefaDigitada = input.nextLine();
+					System.out.println("\n");
+				}
+				
+				tarefa.alteracoesLista(acaoDigitada, tarefaDigitada);
 
-			if(acaoDigitada == 6) {
-				executando = false;
+				if(acaoDigitada == 6) {
+					executando = false;
+					System.out.println("Programa finalizado com sucesso!");
+				}
+				
+			}catch(Exception e){
+				System.out.println("Digite apenas os numeros disponiveis no menu de controle\n");
+				input.nextLine();
 			}
 		}
 	}
