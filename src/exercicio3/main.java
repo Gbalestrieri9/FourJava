@@ -17,7 +17,7 @@ public class main {
 						+ "3. Listar tarefas\n"
 						+ "4. Listar tarefas em ordem alfabetica\n"
 						+ "5. Listar tarefas em cronologicas\n"
-						+ "6. Sair \n");
+						+ "6. Salvar e sair \n");
 				
 				System.out.println("Digite a numeração que deseja selecionar acima:");
 				acaoDigitada = input.nextInt();
