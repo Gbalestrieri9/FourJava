@@ -8,17 +8,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-
 public class Tarefa {
 	Scanner input = new Scanner(System.in);
 	static ArrayList<String> listaDeTarefas = new ArrayList<>();
 	private static final String TAREFAS = "tarefas.txt";
 	
-	private static void carregarTarefas() {
+	public static void carregarTarefas() {
         try (BufferedReader br = new BufferedReader(new FileReader(TAREFAS))) {
             String linha;
             while ((linha = br.readLine()) != null) {
-                listaDeTarefas.add(linha);
+               listaDeTarefas.add(linha);
             }
             System.out.println("Tarefas carregadas com sucesso.");
         } catch (IOException e) {
@@ -27,16 +26,17 @@ public class Tarefa {
     }
 	
 	private static void salvarTarefas() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(TAREFAS))) {
-            for (String tarefa : listaDeTarefas) {
-                bw.write(tarefa);
-                bw.newLine();
-            }
-            System.out.println("Tarefas salvas com sucesso.");
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar tarefas: " + e.getMessage());
-        }
-    }
+	    try (BufferedWriter bw = new BufferedWriter(new FileWriter(TAREFAS))) {
+	       // listaDeTarefas.clear();
+	        for (String tarefa : listaDeTarefas) {
+	            bw.write(tarefa);
+	            bw.newLine();
+	        }
+	        System.out.println("Tarefas salvas com sucesso.");
+	    } catch (IOException e) {
+	        System.out.println("Erro ao salvar tarefas: " + e.getMessage());
+	    }
+	}
 	
 	private void adicionarTarefa(String elemento) {
 		if (listaDeTarefas.contains(elemento.toLowerCase())) {
@@ -77,17 +77,16 @@ public class Tarefa {
 	}
 	
 	private void listarTarefasOrdemAlfabetica() {
-		System.out.println("\n--- Lista de Tarefas em ordem alfabetica ---");
-        if (listaDeTarefas.isEmpty()) {
-            System.out.println("Não há tarefas na lista.\n");
-        } else {
-            for (int i = 0; i < listaDeTarefas.size(); i++) {
-            	Collections.sort(listaDeTarefas);
-                System.out.println((i + 1) + ". " + listaDeTarefas.get(i)+ "\n"); 
-            }
-        }
-	}
-	
+	      System.out.println("\n--- Lista de Tarefas em ordem alfabetica ---");
+	          if (listaDeTarefas.isEmpty()) {
+	              System.out.println("Não há tarefas na lista.\n");
+	          } else {
+	              Collections.sort(listaDeTarefas);
+	              for (int i = 0; i < listaDeTarefas.size();i++) 
+	                  System.out.println((i + 1) + ". " + listaDeTarefas.get(i)+ "\n"); 
+	              }
+	          }
+	    
 	private void listarTarefasOrdemCronologica() {
 		System.out.println("\n--- Lista de Tarefas ---");
         if (listaDeTarefas.isEmpty()) {
@@ -100,7 +99,6 @@ public class Tarefa {
 	}
 	
 	public void alteracoesLista(int acaoSelecionada, String tarefa) {
-		carregarTarefas();
 		switch (acaoSelecionada) {
 		case 1:
 			adicionarTarefa(tarefa);

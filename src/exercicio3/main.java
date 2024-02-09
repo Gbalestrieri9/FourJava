@@ -5,6 +5,8 @@ public class main {
 		Scanner input = new Scanner(System.in);
 		Tarefa tarefa = new Tarefa();
 		
+		tarefa.carregarTarefas();
+		
 		int acaoDigitada;
 		String tarefaDigitada = null;
 		boolean executando = true;
